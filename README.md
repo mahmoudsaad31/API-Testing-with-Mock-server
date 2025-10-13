@@ -61,12 +61,15 @@ newman run <Collection-file.json> -e <Environment-file.json> --iteration-count <
 newman run <Collection-file.json> -e <Environment-file.json> --delay-request <delay-in-milliseconds>
 
 ```
+- **ensure that the reporter is installed in the same directory as newman**
+```
+npm install -g newman-reporter-htmlextra
+```
+
 - **Running a collection with an html report summarizing results**
 ```
-```
- **ensure that the reporter is installed in the same directory as newman**
-
-- npm install -g newman-reporter-htmlextra
 newman run <Collection-file.json> -e <Environment-file.json> -r htmlexta
+
+```
 
 Special Thanks To Mohamed Samir
