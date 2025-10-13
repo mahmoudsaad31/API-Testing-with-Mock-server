@@ -1,0 +1,2332 @@
+{
+	"info": {
+		"_postman_id": "b84442a2-2780-4397-aed6-3b863a89dd34",
+		"name": "QAcart Practice",
+		"description": "In this practice i applied all what i learned from QAcart postman course provided by Eng/Hatem Hatamlah.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46950502"
+	},
+	"item": [
+		{
+			"name": "Registration tests",
+			"item": [
+				{
+					"name": "Signup with empty email and password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"400: Bad Request\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Email and password are required\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Email and password are required\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"First_name\": \"Mahmoud\",\r\n    \"Last_name\": \"Saad\",\r\n    \"Job_title\": \"Testing Engineer\",\r\n    \"email\": \"\",\r\n    \"password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup with empty email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"400: Bad Request\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Email is required\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Email and password are required\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"First_name\": \"Mahmoud\",\r\n    \"Last_name\": \"Saad\",\r\n    \"Job_title\": \"Testing Engineer\",\r\n    \"email\": \"\",\r\n    \"password\": \"Test123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup with invalid email format",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"400: Bad Request\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Email format is invalid\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Email format is invalid\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"First_name\": \"Mahmoud\",\r\n    \"Last_name\": \"Saad\",\r\n    \"Job_title\": \"Testing Engineer\",\r\n    \"email\": \"mahmoudsaad@.com\",\r\n    \"password\": \"Test123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup with empty password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"400: Bad Request\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Password is required\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Email and password are required\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"First_name\": \"Mahmoud\",\r\n    \"Last_name\": \"Saad\",\r\n    \"Job_title\": \"Testing Engineer\",\r\n    \"email\": \"mahmoudsaad@gmail.com\",\r\n    \"password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup with already registered email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400 & Bad Request \", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body contains 'Email already exists'\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include('Email already exists');\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"First_name\": \"Mahmoud\",\r\n    \"Last_name\": \"Saad\",\r\n    \"Job_title\": \"Testing Engineer\",\r\n    \"email\": \"Omar.Sharaf@gmail.com\",\r\n    \"password\": \"Test123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup with all valid credintials",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var User_data = pm.response.json();\r",
+									"pm.environment.set(\"user_id\", User_data.user.id);\r",
+									"\r",
+									"var requestBody = JSON.parse(pm.request.body.raw);\r",
+									"pm.environment.set(\"Random_Email\",requestBody.email );\r",
+									"\r",
+									"\r",
+									"pm.test(\"201: Created\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"    pm.response.to.have.status(\"Created\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"verify that User first and last name is correct\", function () {\r",
+									"    pm.expect(User_data.user.First_name).to.eql(requestBody.First_name);\r",
+									"    pm.expect(User_data.user.Last_name).to.eql(requestBody.Last_name);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"First_name\": \"{{$randomFirstName}}\",\r\n    \"Last_name\": \"{{$randomLastName}}\",\r\n    \"Job_title\": \"Testing Engineer\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"Test123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleting account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status is 200: Ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/{{user_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Searching for deleted user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"404: Not Found\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/{{user_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login tests",
+			"item": [
+				{
+					"name": "Login without email and password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"400: Bad Request\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Email and password are required\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Email and password are required\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"\",\r\n  \"password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login without email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"400: Bad Request\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Email is required\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Email and password are required\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"\",\r\n  \"password\": \"Test123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login with invalid email format",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"400: Bad Request\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Email format is invalid\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Email format is invalid\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"mahmoudsaad@.com\",\r\n  \"password\": \"Test123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login without password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"400: Bad Request\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Password is required\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Email and password are required\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"Mohammed.samir@gmail.com\",\r\n  \"password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login with wrong password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"400: Bad Request\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Incorrect password\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Incorrect password\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"Mohammed.samir@gmail.com\",\r\n  \"password\": \"Test12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login with deleted email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"400: Bad Request\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Cannot find user\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Cannot find user\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{Random_Email}}\",\r\n  \"password\": \"Test123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login with all valid credintials",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var login_Data = pm.response.json();\r",
+									"pm.environment.set(\"token\", login_Data.accessToken);\r",
+									"\r",
+									"pm.test(\"200: OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"verify User name is Mahmoud Saad\", function () {\r",
+									"    pm.expect(login_Data.user.First_name).to.eql(\"Mahmoud\");\r",
+									"    pm.expect(login_Data.user.Last_name).to.eql(\"Saad\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"mahmoudsaad@gmail.com\",\r\n  \"password\": \"Test123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Secure courses' tests",
+			"item": [
+				{
+					"name": "Getting courses",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"200: OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"verify Courses contains: Manual Testing Bootcamp, Selenium course and Postman course\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Manual Testing Bootcamp\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"Selenium course\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"Postman course\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"Cypress course\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"Cucumber course\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"Appium course\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"Manual Testing\");    \r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Sec_url}}/Courses",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting courses with invalid token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"401: Unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"    pm.response.to.have.status(\"Unauthorized\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Invalid token\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"invalid token\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1N1iIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1vaGFtbWVkLkVsc2F5YWFkQGdtYWlsLmNvbSIsImlhdCI6MTczNTUwNDY5NCwiZXhwIjoxNzM1NTA4Mjk0LCJzdWIiOiI0In0.FiRz0gg8xx1B2WhlLIA9kLe95DJbA34urOVFKe2yqls",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Sec_url}}/Courses",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting courses with expired token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"401: Unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"    pm.response.to.have.status(\"Unauthorized\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Expired authorization\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"jwt expired\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1vaGFtbWVkLnNhbWlyQGdtYWlsLmNvbSIsImlhdCI6MTczNTU3MTA3MywiZXhwIjoxNzM1NTc0NjczLCJzdWIiOiIxIn0.eFb2F5skKzrdL_2ynDlmgknPpYmqo7QdOjZ915lm_Xo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Sec_url}}/Courses",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting courses without token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"401: Unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"    pm.response.to.have.status(\"Unauthorized\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Missing authorization\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Missing authorization header\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Sec_url}}/Courses",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adding new course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var C_Data = pm.response.json();\r",
+									"pm.environment.set(\"New_Course_ID\", C_Data.id);\r",
+									"\r",
+									"pm.test(\"201: Created\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"    pm.response.to.have.status(\"Created\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Course Title is Manual Testing\", function () {\r",
+									"    pm.expect(C_Data.title).to.be.equal(\"Manual Testing\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Manual Testing\",\r\n    \"describtion\": \"Full Manual Testing course from zero in arabic\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Sec_url}}/Courses",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adding new course with invalid token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"401: Unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"    pm.response.to.have.status(\"Unauthorized\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Invalid token\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"invalid token\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1N1iIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1vaGFtbWVkLkVsc2F5YWFkQGdtYWlsLmNvbSIsImlhdCI6MTczNTUwNDY5NCwiZXhwIjoxNzM1NTA4Mjk0LCJzdWIiOiI0In0.FiRz0gg8xx1B2WhlLIA9kLe95DJbA34urOVFKe2yqls",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Manual Testing\",\r\n    \"describtion\": \"Full Manual Testing course from zero in arabic\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Sec_url}}/Courses",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adding new course with expired token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"401: Unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"    pm.response.to.have.status(\"Unauthorized\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Expired authorization\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"jwt expired\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1vaGFtbWVkLnNhbWlyQGdtYWlsLmNvbSIsImlhdCI6MTczNTU3MTA3MywiZXhwIjoxNzM1NTc0NjczLCJzdWIiOiIxIn0.eFb2F5skKzrdL_2ynDlmgknPpYmqo7QdOjZ915lm_Xo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Manual Testing\",\r\n    \"describtion\": \"Full Manual Testing course from zero in arabic\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Sec_url}}/Courses",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adding new course without token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"401: Unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"    pm.response.to.have.status(\"Unauthorized\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Missing authorization\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Missing authorization header\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Manual Testing\",\r\n    \"describtion\": \"Full Manual Testing course from zero in arabic\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Sec_url}}/Courses",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting specific course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"200: Ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"var C_Data = pm.response.json();\r",
+									"pm.environment.set(\"New_Course_ID\", C_Data.id);\r",
+									"\r",
+									"pm.test(\"Course is Manual Testing: Full Manual Testing course from zero in arabic\", function () {\r",
+									"    pm.expect(C_Data.title).to.be.equal(\"Manual Testing\");\r",
+									"    pm.expect(C_Data.describtion).to.be.equal(\"Full Manual Testing course from zero in arabic\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Sec_url}}/Courses/{{New_Course_ID}}",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses",
+								"{{New_Course_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting specific course with invalid token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"401: Unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"    pm.response.to.have.status(\"Unauthorized\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Invalid token\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"invalid token\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1N1iIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1vaGFtbWVkLkVsc2F5YWFkQGdtYWlsLmNvbSIsImlhdCI6MTczNTUwNDY5NCwiZXhwIjoxNzM1NTA4Mjk0LCJzdWIiOiI0In0.FiRz0gg8xx1B2WhlLIA9kLe95DJbA34urOVFKe2yqls",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Sec_url}}/Courses/{{New_Course_ID}}",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses",
+								"{{New_Course_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting specific course with expired token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"401: Unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"    pm.response.to.have.status(\"Unauthorized\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Expired authorization\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"jwt expired\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1vaGFtbWVkLnNhbWlyQGdtYWlsLmNvbSIsImlhdCI6MTczNTU3MTA3MywiZXhwIjoxNzM1NTc0NjczLCJzdWIiOiIxIn0.eFb2F5skKzrdL_2ynDlmgknPpYmqo7QdOjZ915lm_Xo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Sec_url}}/Courses/{{New_Course_ID}}",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses",
+								"{{New_Course_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting specific course without token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"401: Unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"    pm.response.to.have.status(\"Unauthorized\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Missing authorization\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Missing authorization header\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Sec_url}}/Courses/{{New_Course_ID}}",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses",
+								"{{New_Course_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modifying existing course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var C_Data = pm.response.json();\r",
+									"pm.environment.set(\"New_Course_ID\", C_Data.id);\r",
+									"\r",
+									"pm.test(\"200: Ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"verify Course is DataBase Testing: Full DataBase Testing course from zero in arabic\", function () {\r",
+									"    pm.expect(C_Data.title).to.be.equal(\"DataBase Testing\");\r",
+									"    pm.expect(C_Data.describtion).to.be.equal(\"Full DataBase Testing course from zero in arabic\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"DataBase Testing\",\r\n    \"describtion\": \"Full DataBase Testing course from zero in arabic\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Sec_url}}/Courses/{{New_Course_ID}}",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses",
+								"{{New_Course_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modifying existing course with invalid token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"401: Unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"    pm.response.to.have.status(\"Unauthorized\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Invalid token\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"invalid token\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1N1iIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1vaGFtbWVkLkVsc2F5YWFkQGdtYWlsLmNvbSIsImlhdCI6MTczNTUwNDY5NCwiZXhwIjoxNzM1NTA4Mjk0LCJzdWIiOiI0In0.FiRz0gg8xx1B2WhlLIA9kLe95DJbA34urOVFKe2yqls",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"DataBase Testing \",\r\n    \"describtion\": \"Full DataBase Testing course from zero in arabic\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Sec_url}}/Courses/{{New_Course_ID}}",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses",
+								"{{New_Course_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modifying existing course with expired token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"401: Unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"    pm.response.to.have.status(\"Unauthorized\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Expired authorization\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"jwt expired\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1vaGFtbWVkLnNhbWlyQGdtYWlsLmNvbSIsImlhdCI6MTczNTU3MTA3MywiZXhwIjoxNzM1NTc0NjczLCJzdWIiOiIxIn0.eFb2F5skKzrdL_2ynDlmgknPpYmqo7QdOjZ915lm_Xo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"DataBase Testing \",\r\n    \"describtion\": \"Full DataBase Testing course from zero in arabic\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Sec_url}}/Courses/{{New_Course_ID}}",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses",
+								"{{New_Course_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modifying existing course without token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"401: Unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"    pm.response.to.have.status(\"Unauthorized\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Missing authorization\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Missing authorization header\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"DataBase Testing \",\r\n    \"describtion\": \"Full DataBase Testing course from zero in arabic\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Sec_url}}/Courses/{{New_Course_ID}}",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses",
+								"{{New_Course_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting a course ofter modifying",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var C_Data = pm.response.json();\r",
+									"pm.environment.set(\"New_Course_ID\", C_Data.id);\r",
+									"\r",
+									"pm.test(\"200: Ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Course is DataBase Testing: Full DataBase Testing course from zero in arabic\", function () {\r",
+									"    pm.expect(C_Data.title).to.be.equal(\"DataBase Testing\");\r",
+									"    pm.expect(C_Data.describtion).to.be.equal(\"Full DataBase Testing course from zero in arabic\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Sec_url}}/Courses/{{New_Course_ID}}",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses",
+								"{{New_Course_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleting existing course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"200: Ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Sec_url}}/Courses/{{New_Course_ID}}",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses",
+								"{{New_Course_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleting unexisting course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"404: Not Found\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Sec_url}}/Courses/{{New_Course_ID}}",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses",
+								"{{New_Course_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleting existing course with invalid token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"401: Unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"    pm.response.to.have.status(\"Unauthorized\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Invalid token\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"invalid token\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1N1iIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1vaGFtbWVkLkVsc2F5YWFkQGdtYWlsLmNvbSIsImlhdCI6MTczNTUwNDY5NCwiZXhwIjoxNzM1NTA4Mjk0LCJzdWIiOiI0In0.FiRz0gg8xx1B2WhlLIA9kLe95DJbA34urOVFKe2yqls",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Sec_url}}/Courses/{{New_Course_ID}}",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses",
+								"{{New_Course_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleting existing course with expired token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"401: Unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"    pm.response.to.have.status(\"Unauthorized\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Expired authorization\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"jwt expired\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1vaGFtbWVkLnNhbWlyQGdtYWlsLmNvbSIsImlhdCI6MTczNTU3MTA3MywiZXhwIjoxNzM1NTc0NjczLCJzdWIiOiIxIn0.eFb2F5skKzrdL_2ynDlmgknPpYmqo7QdOjZ915lm_Xo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Sec_url}}/Courses/{{New_Course_ID}}",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses",
+								"{{New_Course_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleting existing course without token Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"401: Unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"    pm.response.to.have.status(\"Unauthorized\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: Missing authorization\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Missing authorization header\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Sec_url}}/Courses/{{New_Course_ID}}",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses",
+								"{{New_Course_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting a course after deletion",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"404: Not Found\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Sec_url}}/Courses/{{New_Course_ID}}",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses",
+								"{{New_Course_ID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "E2E Tests",
+			"item": [
+				{
+					"name": "Signup with all valid credintials",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var User_data = pm.response.json();\r",
+									"pm.environment.set(\"user_id\", User_data.user.id);\r",
+									"\r",
+									"var requestBody = JSON.parse(pm.request.body.raw);\r",
+									"pm.environment.set(\"Random_Email\",requestBody.email );\r",
+									"\r",
+									"\r",
+									"pm.test(\"201: Created\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"    pm.response.to.have.status(\"Created\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"verify User first and last name is correct\", function () {\r",
+									"    pm.expect(User_data.user.First_name).to.eql(requestBody.First_name);\r",
+									"    pm.expect(User_data.user.Last_name).to.eql(requestBody.Last_name);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"First_name\": \"{{$randomFirstName}}\",\r\n    \"Last_name\": \"{{$randomLastName}}\",\r\n    \"Job_title\": \"Testing Engineer\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"Test123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login with all valid credintials",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var login_Data = pm.response.json();\r",
+									"pm.environment.set(\"token\", login_Data.accessToken);\r",
+									"\r",
+									"pm.test(\"200: OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"verify User name is Mahmoud Saad\", function () {\r",
+									"    pm.expect(login_Data.user.First_name).to.eql(\"Mahmoud\");\r",
+									"    pm.expect(login_Data.user.Last_name).to.eql(\"Saad\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"mahmoudsaad@gmail.com\",\r\n  \"password\": \"Test123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adding new course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var C_Data = pm.response.json();\r",
+									"pm.environment.set(\"New_Course_ID\", C_Data.id);\r",
+									"\r",
+									"pm.test(\"201: Created\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"    pm.response.to.have.status(\"Created\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Course Title is Manual Testing\", function () {\r",
+									"    pm.expect(C_Data.title).to.be.equal(\"Manual Testing\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Manual Testing\",\r\n    \"describtion\": \"Full Manual Testing course from zero in arabic\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Sec_url}}/Courses",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modifying existing course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var C_Data = pm.response.json();\r",
+									"pm.environment.set(\"New_Course_ID\", C_Data.id);\r",
+									"\r",
+									"pm.test(\"200: Ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Course is DataBase Testing: Full DataBase Testing course from zero in arabic\", function () {\r",
+									"    pm.expect(C_Data.title).to.be.equal(\"DataBase Testing\");\r",
+									"    pm.expect(C_Data.describtion).to.be.equal(\"Full DataBase Testing course from zero in arabic\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"DataBase Testing\",\r\n    \"describtion\": \"Full DataBase Testing course from zero in arabic\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Sec_url}}/Courses/{{New_Course_ID}}",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses",
+								"{{New_Course_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleting existing course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"200: Ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Sec_url}}/Courses/{{New_Course_ID}}",
+							"host": [
+								"{{Sec_url}}"
+							],
+							"path": [
+								"Courses",
+								"{{New_Course_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleting account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"200: Ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/{{user_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

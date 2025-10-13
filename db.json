@@ -1,0 +1,97 @@
+{
+  "Courses": [
+    {
+      "id": 1,
+      "title": "Manual Testing Bootcamp",
+      "describtion": "Full Manual Testing Bootcamp from zero in arabic"
+    },
+    {
+      "id": 2,
+      "title": "Selenium course",
+      "describtion": "Full Selenium Java course from zero in arabic"
+    },
+    {
+      "id": 3,
+      "title": "Cypress course",
+      "describtion": "Full Cypress course from zero in arabic"
+    },
+    {
+      "id": 4,
+      "title": "Cucumber course",
+      "describtion": "Full Cucumber course from zero in arabic"
+    },
+    {
+      "title": "Postman course",
+      "describtion": "Full Postman course from zero in arabic",
+      "id": 5
+    },
+    {
+      "title": "Appium course",
+      "describtion": "Full Appium course from zero in arabic",
+      "id": 6
+    },
+    {
+      "title": "Manual Testing",
+      "describtion": "Full Manual Testing course from zero in arabic",
+      "id": 7
+    }
+  ],
+  "users": [
+    {
+      "email": "Mohammed.samir@gmail.com",
+      "password": "$2a$10$RqNbmOigNBDgbsUIIHjo0O5k9tWgsysG0.nZAnijEml92AyrPkJny",
+      "First_name": "Mohammed",
+      "Last_name": "Samir",
+      "Job_title": "QA Engineer",
+      "id": 1
+    },
+    {
+      "email": "Ahmed.samir@gmail.com",
+      "password": "$2a$10$ApGGnp3W7OvyijCxBqScE.YhLUNNQThk20FwzI7hQHPTmZLMHZBmO",
+      "First_name": "Ahmed",
+      "Last_name": "Samir",
+      "Job_title": "junior Accountant",
+      "id": 2
+    },
+    {
+      "email": "Mohammed.Badr@gmail.com",
+      "password": "$2a$10$viNXq9ejAtO2sqZ3bq.QQuA12GdQQ0f4K/.JyrnQxxnIWi4QqiEga",
+      "First_name": "Mohammed",
+      "Last_name": "Badr",
+      "Job_title": "Electrical Engineer",
+      "id": 3
+    },
+    {
+      "email": "Mohammed.Elsayaad@gmail.com",
+      "password": "$2a$10$PumlTAigczzCbFBnNyuK8uva9Q.LbL1MnSKr1WUnj5Ttv3mPvvmy2",
+      "First_name": "Mohammed",
+      "Last_name": "Elsayaad",
+      "Job_title": "Embedded Engineer",
+      "id": 4
+    },
+    {
+      "email": "Omar.Sharaf@gmail.com",
+      "password": "$2a$10$Q50ApGjdfetIfi.wG7fK1.syliwMBPKfpN65KcFr5Vk5wgpaEyJmu",
+      "First_name": "Omar",
+      "Last_name": "Sharaf",
+      "Job title": "Production Engineer",
+      "id": 5
+    },
+    {
+      "email": "mahmoudsaad@gmail.com",
+      "password": "$2a$10$XuE94n4uwyEokR3qR42DG.eV/Icm9R9CYTkLJP4md0NleIAe5eJ3.",
+      "First_name": "Mahmoud",
+      "Last_name": "Saad",
+      "Job_title": "Testing Engineer",
+      "id": 6
+    },
+    {
+      "email": "Evans.Hartmann27@gmail.com",
+      "password": "$2a$10$V1LCCnpvyohmU.BwVm9/FOc2azlaDtR9NJkK0eD9wElcdSinGcYjO",
+      "First_name": "Sigmund",
+      "Last_name": "Bashirian",
+      "Job_title": "Testing Engineer",
+      "id": 7
+    }
+  ]
+}
